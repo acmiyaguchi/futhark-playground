@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  # container for running the app without cuda
+  base: &base
+    build:
+      context: .
+    image: futhark-playground:latest
+    volumes:
+      - ./:/app/
+    command: bash
+  gpu:
+    <<: *base
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
