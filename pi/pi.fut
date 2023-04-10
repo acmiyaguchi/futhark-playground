@@ -1,10 +1,14 @@
 -- # Calculating pi with futhark
 
-def linspace (n: i64) (start: f64) (end: f64) : [n]f64 =
-  tabulate n (\i -> start + f64.i64 i * ((end-start)/f64.i64 n))
+import "lib/github.com/diku-dk/statistics/statistics"
+module s = mk_statistics f64
+let mean = s.mean
 
--- With an evaluation directive, we can show what it evaluates to:
+-- > mean [3.0f64,4.5f64,6.0f64,6.5f64]
 
--- > linspace 10i64 0f64 10f64
+-- # References
+-- See the following links for repositories used through this module:
 
--- > linspace 10i64 5f64 10f64
+-- * https://futhark-book.readthedocs.io/en/latest/random-sampling.html
+-- * https://futhark-lang.org/examples/dex-pi.html
+-- * https://github.com/diku-dk/statistics

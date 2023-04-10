@@ -1,3 +1,4 @@
 *.c
 pi/pi
 *-img/
+lib/
